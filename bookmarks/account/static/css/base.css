@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/css?family=Muli);
+
+.header{
+    width: 100%;
+    height: auto;
+    background: #12c064;
+    font-size: 30px;
+    padding: 15px 0;
+}
+
+.logo{
+    font-family: 'Muli', sans-serif;
+    color:#f3f7cc;
+    margin-left: 8%;
+}
+
+.content{
+    margin-top: 4%;
+    margin-left: 8% ;
+    margin-right: 8%;
+}
+
+form{
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
+}
+
+label{
+    font-size: 25px;
+    margin: 10px;
+}
+
+[type='text'], [type="password"]{
+    height: 25px;
+}
+
+#login_submit{
+    font-size: 20px;
+    padding: 5px;
+    margin-left: 10px;
+    background: #12c064; 
+    width: 100px;
+}
+
+#login_submit:hover{
+    transform: scale(0.9);
+}
+
+
