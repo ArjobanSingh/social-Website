@@ -4,10 +4,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     #custom login view
-    #path('login/', views.user_login, name = 'login'),
+    path('login/', views.user_login, name = 'login'),
 
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    #path('login/', auth_views.LoginView.as_view(), name='login'),
 
     path('', views.dashboard, name='dashboard'),
 
@@ -18,6 +18,8 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
     path('register/', views.register, name='register'),
+
+    path('edit/', views.edit, name='edit'),
 
     #alternate way to add all authentication views(including loginand logout, password change and reset, just add following line)
     #path('', include('django.contrib.auth.urls')),
