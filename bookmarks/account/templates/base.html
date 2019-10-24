@@ -4,6 +4,7 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <script src="{% static 'javascript/script.js' %}"></script>
     </head>
     <body>
         <div class="header">
@@ -31,6 +32,16 @@
                 {% endif %}
             </span>
         </div>
+        {% if messages %}
+            <ul class='messages'>
+                {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class='close'>x</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <div class="content">
             {% block content %}
             {% endblock %}

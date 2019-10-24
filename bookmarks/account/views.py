@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.contrib import messages
 
 # Create your views here.
 #custom login view but now not need that, due to i used predefined views
@@ -20,14 +21,16 @@ def user_login(request):
                     login(request, user)
                     return redirect('dashboard')
                 else:
-                    return render(request, "account/login.html", {"form": form, "errors":True})  
+                    messages.error(request, 'Invalid user')
+                    return render(request, "account/login.html", {"form": form})  
             else:
-                return render(request, "account/login.html", {"form": form, "errors":True})  
+                messages.error(request, 'Invalid credentials')
+                return render(request, "account/login.html", {"form": form})  
     else:
         if request.user.is_authenticated:
             return redirect('dashboard')
         form = LoginForm()
-        return render(request, "account/login.html", {"form": form, "errors":False})  
+        return render(request, "account/login.html", {"form": form})  
 
 
 def register(request):
@@ -64,6 +67,10 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Profile updated successfully')
+
+        else:
+            messages.error(request,'Error updating your profile')
 
     else:
         user_form=UserEditForm(instance=request.user)

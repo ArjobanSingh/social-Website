@@ -25,7 +25,7 @@ SECRET_KEY = '5z2x)3!i0b=5(m1+g$%z^#2f1ey_mupd(xq-m(m&&(ak1cd1b^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,21 @@ USE_L10N = True
 USE_TZ = True
 
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '****' #auth facebook key
+SOCIAL_AUTH_FACEBOOK_SECRET = '****' #auth facebook secret key
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = '****'  #auth twitter key
+SOCIAL_AUTH_TWITTER_SECRET = '****'  #auth twitter secret key
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -125,3 +141,5 @@ LOGOUT_URL='logout'
 EMAIL_BACKEND= 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL= '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+
+
