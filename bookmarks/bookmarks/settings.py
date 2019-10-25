@@ -107,7 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'     Default time zone
+TIME_ZONE =  'Asia/Kolkata'  #my time zone
 
 USE_I18N = True
 
@@ -121,6 +122,7 @@ AUTHENTICATION_BACKENDS = [
     'account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 SOCIAL_AUTH_FACEBOOK_KEY = '****' #auth facebook key
@@ -129,6 +131,10 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_TWITTER_KEY = '****'  #auth twitter key
 SOCIAL_AUTH_TWITTER_SECRET = '****'  #auth twitter secret key
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '****'  #auth google key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '****'     #auth google secret key
+
 
 
 # Static files (CSS, JavaScript, Images)

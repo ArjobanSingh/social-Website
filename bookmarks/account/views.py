@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 #custom login view but now not need that, due to i used predefined views
@@ -15,6 +16,7 @@ def user_login(request):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(request, username=cd['username'], password=cd['password'])
+            print('using twitter')
 
             if user is not None:
                 if user.is_active:
@@ -73,6 +75,14 @@ def edit(request):
             messages.error(request,'Error updating your profile')
 
     else:
+        try:
+            profile = User.objects.get(pk=request.user.id).profile
+            #print('profile is present')
+            #user_form=UserEditForm(instance=request.user)
+            #profile_form = ProfileEditForm(instance=request.user.profile)
+        except: 
+            print('no profile')
+            Profile.objects.create(user=request.user)
         user_form=UserEditForm(instance=request.user)
-        profile_form = ProfileEditForm(instance=request.user.profile)
+        profile_form = ProfileEditForm(instance=request.user.profile)           
     return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})        
