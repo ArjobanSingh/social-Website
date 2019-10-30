@@ -25,7 +25,7 @@ SECRET_KEY = '5z2x)3!i0b=5(m1+g$%z^#2f1ey_mupd(xq-m(m&&(ak1cd1b^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', 'd2ccc1b6.ngrok.io']
 
 
 # Application definition
@@ -135,6 +135,7 @@ SOCIAL_AUTH_TWITTER_SECRET = '****'  #auth twitter secret key
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '****'  #auth google key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '****'     #auth google secret key
+
 
 
 
