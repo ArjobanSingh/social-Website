@@ -30,6 +30,7 @@ def image_create(request):
                   {'section': 'images',
                    'form': form})                
 
+@login_required
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
     context = {'section':'images', 'image': image}
@@ -44,9 +45,9 @@ def image_like(request):
         try:
             image = Image.objects.get(id=image_id)
             if action == 'like':
-                image.users_likes.add(request.user)
+                image.users_like.add(request.user)
             else:
-                image.users_likes.remove(request.user)
+                image.users_like.remove(request.user)   
             return JsonResponse({'status': 'ok'})
         except:
             pass
