@@ -15,11 +15,11 @@
                     <a href="{% url 'dashboard' %}">My dashboard</a>
                   </li>
                 <li {% ifequal section "images" %} class="selected"{% endifequal %}>
-                    <a href="#">Images</a>
+                    <a href="{% url 'images:list' %}">Images</a>
                 </li>                
                 <li {% ifequal section "people" %} class="selected"{% endifequal %}>
                     <a href="#">People</a>
-                </li>                
+                </li>                               
             </ul>
             {% endif %}
 
